@@ -35,3 +35,6 @@ def consulta(conexao, query):
      registros = cursor.fetchall()
      cursor.close()
      return registros
+
+def insercao(conexao, query, valor): 
+    ...
