@@ -55,22 +55,46 @@ insert into conexao(data_hora_ativacao, data_hora_desativacao, stargate_origem, 
 values(
 	TO_TIMESTAMP('10/12/2023 15:01', 'DD/MM/YYYY HH24:MI'),
 	TO_TIMESTAMP('10/12/2023 15:30', 'DD/MM/YYYY HH24:MI'),
-	'32157860', 
-	'57892141'
+	'32157860', '57892141'
 );
 
 insert into conexao(data_hora_ativacao, data_hora_desativacao, stargate_origem, stargate_destino)
 values(
 	TO_TIMESTAMP('10/12/2023 17:23', 'DD/MM/YYYY HH24:MI'),
 	TO_TIMESTAMP('10/12/2023 18:05', 'DD/MM/YYYY HH24:MI'),
-	'32157860', 
-	'57892141'
+	'32157860', '57892141'
 );
 
 insert into conexao(data_hora_ativacao, stargate_origem, stargate_destino)
 values(
 	TO_TIMESTAMP('10/12/2023 18:30', 'DD/MM/YYYY HH24:MI'),
-	'57892141',
-	'15378528'
+	'57892141', '15378528'
 );
 
+------------------------------------------- REMESSA -------------------------------------------
+insert into remessa(data_hora_envio, planeta, recurso, data_hora_conexao, origem_conexao, 
+					quantidade, valor_unitario, valor_total)
+values(
+	TO_TIMESTAMP('10/12/2023 15:08', 'DD/MM/YYYY HH24:MI'),
+	1, '2690',
+	TO_TIMESTAMP('10/12/2023 15:01', 'DD/MM/YYYY HH24:MI'), '32157860',
+	5, 1522.90, 7614.50
+);
+
+insert into remessa(data_hora_envio, planeta, recurso, data_hora_conexao, origem_conexao, 
+					quantidade, valor_unitario, valor_total)
+values(
+	TO_TIMESTAMP('10/12/2023 17:35', 'DD/MM/YYYY HH24:MI'),
+	1, '301',
+	TO_TIMESTAMP('10/12/2023 17:23', 'DD/MM/YYYY HH24:MI'), '32157860',
+	500, 5, 2500
+);
+
+insert into remessa(data_hora_envio, planeta, recurso, data_hora_conexao, origem_conexao, 
+					quantidade, valor_unitario, valor_total)
+values(
+	TO_TIMESTAMP('10/12/2023 17:35', 'DD/MM/YYYY HH24:MI'),
+	1, '562',
+	TO_TIMESTAMP('10/12/2023 17:23', 'DD/MM/YYYY HH24:MI'), '32157860',
+	3, 60000, 180000
+);

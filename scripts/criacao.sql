@@ -77,3 +77,25 @@ create table Conexao(
 	constraint CK_ATIVACAO_DESATIVACAO check (data_hora_desativacao > data_hora_ativacao)
 );
 
+------------------------------------------- REMESSA -------------------------------------------
+create table Remessa(
+	data_hora_envio timestamp not null,
+	planeta int not null,
+	recurso varchar(9) not null,
+	data_hora_conexao timestamp not null,
+	origem_conexao char(8) not null,
+	quantidade int,
+	valor_unitario numeric(8,2),
+	valor_total numeric(8,2),
+	constraint PK_REMESSA primary key(data_hora_envio, planeta, recurso, data_hora_conexao, origem_conexao),
+	constraint FK_REMESSA_RECURSO foreign key(planeta, recurso) references Recurso(planeta, codigo)
+		on update cascade on delete cascade,
+	constraint FK_REMESSA_CONEXAO foreign key(data_hora_conexao, origem_conexao)
+		references Conexao(data_hora_ativacao, stargate_origem)
+		on update cascade on delete cascade,
+	constraint CK_DATA_HORA_ENVIO check(data_hora_envio > data_hora_conexao),
+	constraint CK_QUANTIDADE check(quantidade > 0),
+	constraint CK_VALOR_UNITARIO check(valor_unitario > 0),
+	constraint CK_VALOR_TOTAL check(valor_total > 0)
+);
+

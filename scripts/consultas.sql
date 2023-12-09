@@ -6,8 +6,11 @@ select * from sistema_estelar se;
 
 select * from planeta p;
 
-select * from recurso r;
+select * from recurso rec;
 
 select * from stargate s;
 
 select * from conexao c;
+
+select * from remessa rem;
+
