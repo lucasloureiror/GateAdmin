@@ -3,3 +3,5 @@
 --set search_path to stargate; -- Se o nome do esquema for "stargate"
 
 select * from galaxia;
+
+select * from sistema_estelar;
