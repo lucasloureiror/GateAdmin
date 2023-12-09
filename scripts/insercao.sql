@@ -37,6 +37,19 @@ values('45341350', 'ativo', 2);
 insert into stargate(endereco, status_stargate)
 values('15378528', 'danificado');
 
+------------------------------------------- RECURSO -------------------------------------------
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '1784', 'Arma de fogo', 'ABUNDANTE', 'TECNOLOGICO');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '2690', 'Dispositivo de comunicação para longas distâncias', 'ESCASSO', 'TECNOLOGICO');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '301', 'Carvão mineral', 'ABUNDANTE', 'NATURAL');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '562', 'Diamante', 'ESCASSO', 'NATURAL');
+
 ------------------------------------------- CONEXAO -------------------------------------------
 insert into conexao(data_hora_ativacao, data_hora_desativacao, stargate_origem, stargate_destino)
 values(

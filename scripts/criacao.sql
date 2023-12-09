@@ -45,6 +45,20 @@ create table Stargate(
 	constraint CK_ENDERECO check (endereco ~ '^[0-9]+$')
 );
 
+------------------------------------------- RECURSO -------------------------------------------
+create table Recurso(
+    planeta int not null,
+    codigo varchar(9) not null,
+    nome varchar(150),
+    abundancia varchar(20),
+    origem varchar(20) not null,
+    constraint PK_RECURSO primary key(planeta, codigo),
+    constraint FK_RECURSO_PLANETA 
+    	foreign key(planeta) references Planeta(id_planeta)
+    	on update cascade on delete cascade,
+    constraint CK_ORIGEM check(upper(origem) in ('NATURAL', 'TECNOLOGICO'))
+);
+
 ------------------------------------------- CONEXAO -------------------------------------------
 create table Conexao(
 	data_hora_ativacao timestamp not null,

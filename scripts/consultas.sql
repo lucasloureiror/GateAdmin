@@ -8,4 +8,6 @@ select * from planeta p;
 
 select * from stargate s;
 
+select * from recurso r;
+
 select * from conexao c;
