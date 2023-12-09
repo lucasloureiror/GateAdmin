@@ -16,7 +16,7 @@ docker-run:
 	docker run --name $(CONTAINER_NAME) -p $(PORT):$(PORT) -d $(IMAGE_NAME)
 
 docker-restart:
-    docker restart $(CONTAINER_NAME)
+	docker restart $(CONTAINER_NAME)
 
 docker-stop:
 	docker stop $(CONTAINER_NAME)
