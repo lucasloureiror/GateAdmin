@@ -16,13 +16,13 @@ values('Pegasus', 'Sistema Lantean', 'TRIPLO');
 
 ------------------------------------------- PLANETA -------------------------------------------
 insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
-values(1, 'Via Láctea', 'Sistema Solar', 'Terra', 'ROCHOSO', 'HABITAVEL', 'intacto');
+values(nextval('seq_planeta'), 'Via Láctea', 'Sistema Solar', 'Terra', 'ROCHOSO', 'HABITAVEL', 'intacto');
 
 insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
-values(2, 'Via Láctea', 'Sistema Solar', 'Marte', 'ROCHOSO', 'INABITAVEL', 'intacto');
+values(nextval('seq_planeta'), 'Via Láctea', 'Sistema Solar', 'Marte', 'ROCHOSO', 'INABITAVEL', 'intacto');
 
 insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
-values(3, 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO', 'HABITAVEL', 'abandonado');
+values(nextval('seq_planeta'), 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO', 'HABITAVEL', 'abandonado');
 
 ------------------------------------------ STARGATE -------------------------------------------
 insert into stargate(endereco, status_stargate, planeta)
