@@ -106,3 +106,10 @@ values('Humanos', 'inglês', 'MEDIANO', 'MEDIANO', 'existente');
 insert into civilizacao(nome, lingua, nivel_tecnologico, nivel_agressividade, status_civilizacao)
 values('Lantianos', 'ancient', 'AVANÇADO', 'BAIXO', 'destruída');
 
+------------------------------------------- ESPECIE -------------------------------------------
+insert into especie(nome, civilizacao, forma_locomocao, simetria, alimentacao)
+values('Humana', 'Humanos', 'BIPEDE TERRESTRE', 'BILATERAL', 'ONIVORO');
+
+insert into especie(nome, civilizacao, forma_locomocao, simetria, alimentacao)
+values('Ancients', 'Lantianos', 'BIPEDE TERRESTRE', 'BILATERAL', 'ONIVORO');
+

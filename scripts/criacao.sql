@@ -3,7 +3,7 @@ set search_path to public;
 ------------------------------------------- GALAXIA -------------------------------------------
 create table Galaxia(
 	nome varchar(100) not null,
-	tipo varchar(20),
+	tipo varchar(9),
 	constraint PK_GALAXIA primary key(nome),
 	constraint CK_TIPO check(upper(tipo) in ('ELIPTICA', 'ESPIRAL', 'IRREGULAR'))
 );
@@ -24,7 +24,7 @@ create table Planeta(
 	galaxia varchar(100) not null,
 	sistema varchar(100) not null,
 	nome varchar(100) not null,
-	tipo varchar(20),
+	tipo varchar(7),
 	habitabilidade varchar(20),
 	status_planeta varchar(20),
 	constraint PK_PLANETA primary key(id_planeta),
@@ -44,7 +44,7 @@ create table Recurso(
     codigo varchar(9) not null,
     nome varchar(150),
     abundancia varchar(20),
-    origem varchar(20) not null,
+    origem varchar(11) not null,
     constraint PK_RECURSO primary key(planeta, codigo),
     constraint FK_RECURSO_PLANETA foreign key(planeta) references Planeta(id_planeta) 
     	on update cascade on delete cascade,
@@ -109,5 +109,18 @@ create table Civilizacao(
 	nivel_agressividade varchar(20),
 	status_civilizacao varchar(20),
 	constraint PK_CIVILIZACAO primary key(nome)
+);
+
+------------------------------------------- ESPECIE -------------------------------------------
+create table Especie(
+	nome varchar(100) not null,
+	civilizacao varchar(100) not null,
+	forma_locomocao varchar(20),
+	simetria varchar(12),
+	alimentacao varchar(9),
+	constraint PK_ESPECIE primary key(nome),
+	constraint UK_ESPECIE_CIVILIZACAO unique(civilizacao),
+	constraint CK_SIMETRIA check(upper(simetria) in ('BILATERAL', 'RADIAL', 'SEM SIMETRIA')),
+	constraint CK_ALIMENTACAO check(upper(alimentacao) in ('HERBIVORO', 'CARNIVORO', 'ONIVORO', 'OUTRO'))
 );
 

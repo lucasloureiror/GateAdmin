@@ -15,3 +15,6 @@ select * from conexao con;
 select * from remessa rem;
 
 select * from civilizacao civ;
+
+select * from especie e;
+
