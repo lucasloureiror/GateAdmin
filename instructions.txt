@@ -1,8 +1,10 @@
 PYTHON PRECISA RODAR ISSO ANTES
 
 pip install psycopg2-binary
+pip install prettytable
 ou
 pip3 install psycopg2-binary
+pip3 install prettytable
 
 
 DOCKERFILE O FLUXO É
