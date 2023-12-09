@@ -15,3 +15,13 @@ values('Via Láctea', 'Sistema Solar', 'SOLITARIO');
 
 insert into sistema_estelar(galaxia, nome_sistema, tipo_sistema)
 values('Pegasus', 'Sistema Lantean', 'TRIPLO');
+
+------------------------------------------- PLANETA -------------------------------------------
+insert into planeta(id_planeta, galaxia, sistema, nome_planeta, tipo_planeta, habitabilidade, status_planeta)
+values(1, 'Via Láctea', 'Sistema Solar', 'Terra', 'ROCHOSO', 'HABITAVEL', 'intacto');
+
+insert into planeta(id_planeta, galaxia, sistema, nome_planeta, tipo_planeta, habitabilidade, status_planeta)
+values(2, 'Via Láctea', 'Sistema Solar', 'Marte', 'ROCHOSO', 'INABITAVEL', 'intacto');
+
+insert into planeta(id_planeta, galaxia, sistema, nome_planeta, tipo_planeta, habitabilidade, status_planeta)
+values(3, 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO', 'HABITAVEL', 'abandonado');

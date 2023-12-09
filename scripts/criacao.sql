@@ -17,3 +17,21 @@ create table Sistema_Estelar(
 	constraint PK_SISTEMA primary key(galaxia, nome),
 	constraint FK_SISTEMA_GALAXIA foreign key(galaxia) references Galaxia(nome)
 );
+
+------------------------------------------- PLANETA -------------------------------------------
+create table Planeta(
+	id_planeta int not null,
+	galaxia varchar(100) not null,
+	sistema varchar(100) not null,
+	nome varchar(100) not null,
+	tipo varchar(20),
+	habitabilidade varchar(20),
+	status varchar(20),
+	constraint PK_PLANETA primary key(id_planeta),
+	constraint FK_PLANETA_SISTEMA foreign key(galaxia, sistema) references Sistema_Estelar(galaxia, nome),
+	constraint UK_PLANETA_SISTEMA unique(galaxia, sistema, nome)
+);
+
+create sequence SEQ_PLANETA
+    start with 1
+    increment by 1;
