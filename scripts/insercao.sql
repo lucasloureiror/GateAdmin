@@ -113,3 +113,10 @@ values('Humana', 'Humanos', 'BIPEDE TERRESTRE', 'BILATERAL', 'ONIVORO');
 insert into especie(nome, civilizacao, forma_locomocao, simetria, alimentacao)
 values('Ancients', 'Lantianos', 'BIPEDE TERRESTRE', 'BILATERAL', 'ONIVORO');
 
+---------------------------------- CIVILIZACAO_VIVE_PLANETA -----------------------------------
+insert into civilizacao_vive_planeta(civilizacao, planeta, localizacao, populacao)
+values('Humanos', 1, 'Estados Unidos', '331.9 milhões');
+
+insert into civilizacao_vive_planeta(civilizacao, planeta, localizacao, populacao)
+values('Humanos', 3, 'Atlantis', '423');
+

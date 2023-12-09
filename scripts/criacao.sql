@@ -120,7 +120,23 @@ create table Especie(
 	alimentacao varchar(9),
 	constraint PK_ESPECIE primary key(nome),
 	constraint UK_ESPECIE_CIVILIZACAO unique(civilizacao),
+	constraint FK_ESPECIE_CIVILIZACAO foreign key(civilizacao) references Civilizacao(nome)
+		on update cascade on delete cascade,
 	constraint CK_SIMETRIA check(upper(simetria) in ('BILATERAL', 'RADIAL', 'SEM SIMETRIA')),
 	constraint CK_ALIMENTACAO check(upper(alimentacao) in ('HERBIVORO', 'CARNIVORO', 'ONIVORO', 'OUTRO'))
+);
+
+
+---------------------------------- CIVILIZACAO_VIVE_PLANETA -----------------------------------
+create table Civilizacao_vive_Planeta(
+	civilizacao varchar(100) not null,
+	planeta int not null,
+	localizacao varchar(50),
+	populacao varchar(20),
+	constraint PK_CIVILIZACAO_VIVE_PLANETA primary key(civilizacao, planeta),
+	constraint FK_CIVILIZACAO foreign key(civilizacao) references Civilizacao(nome)
+		on update cascade on delete cascade,
+	constraint FK_PLANETA foreign key(planeta) references Planeta(id_planeta)
+		on update cascade on delete cascade
 );
 

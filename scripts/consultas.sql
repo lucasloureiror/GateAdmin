@@ -18,3 +18,5 @@ select * from civilizacao civ;
 
 select * from especie e;
 
+select * from civilizacao_vive_planeta cvp;
+
