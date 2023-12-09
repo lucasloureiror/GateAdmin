@@ -26,13 +26,13 @@ values(3, 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO', 'HABITAVEL', 'aband
 
 ------------------------------------------ STARGATE -------------------------------------------
 insert into stargate(endereco, status_stargate, planeta)
-values('3215786', 'ativo', 1);
+values('32157860', 'ativo', 1);
 
 insert into stargate(endereco, status_stargate, planeta)
-values('5789214', 'ativo', 3);
+values('57892141', 'ativo', 3);
 
 insert into stargate(endereco, status_stargate, planeta)
-values('4534135', 'ativo', 2);
+values('45341350', 'ativo', 2);
 
 insert into stargate(endereco, status_stargate)
-values('1537852', 'danificado');
+values('15378528', 'danificado');
