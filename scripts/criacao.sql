@@ -35,3 +35,13 @@ create table Planeta(
 create sequence SEQ_PLANETA
     start with 1
     increment by 1;
+
+------------------------------------------ STARGATE -------------------------------------------
+create table Stargate(
+	endereco char(8) not null,
+	status varchar(20),
+	planeta int,
+	constraint PK_STARGATE primary key(endereco),
+	constraint FK_STARGATE_PLANETA foreign key(planeta) references Planeta(id_planeta),
+	constraint UK_STARGATE_PLANETA unique(planeta)
+);
