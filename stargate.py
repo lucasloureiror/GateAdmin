@@ -7,6 +7,11 @@ class Stargate:
         self.status_stargate = status_stargate
         self.planeta = planeta
 
+    def validar(self):
+        # Verifica se o endereço tem 8 caracteres
+        if len(self.endereco) != 8:
+            return False
+        
     def __repr__(self):
         return f"Stargate(endereco='{self.endereco}', status_stargate='{self.status_stargate}', planeta={self.planeta})"
 
@@ -86,16 +91,16 @@ def imprimir_stargates(stargates):
     for stargate in stargates:
         tabela.add_row([stargate.endereco, stargate.status_stargate, stargate.planeta])
     print(tabela)
-    print("Faça a análise dos dados, anote o que for necessário e aperte qualquer tecla para retornar ao menu")
+    print("Faça a análise dos dados, anote o que for necessário e aperte qualquer tecla para retornar ao menu.")
     input()
 
 def buscar(conexao, parametro, valor):
     # Verifica se o valor é uma instância de string
     if isinstance(valor, str):
-        # Converte para lowercase
-        valor = valor.lower()
-    # Usando parâmetros na consulta SQL
-    query = f"SELECT * FROM Stargate WHERE {parametro} = %s"
+        # Query agnóstica ao tipo de case da string
+        query = f"SELECT * FROM Stargate WHERE upper({parametro}) = upper(%s)"
+    else:
+        query = f"SELECT * FROM Stargate WHERE {parametro} = %s"
     cursor = conexao.cursor()
     cursor.execute(query, (valor,))
     registros = cursor.fetchall()
@@ -108,26 +113,4 @@ def buscar(conexao, parametro, valor):
     # Fecha o cursor após o uso (a conexão pode ser fechada em outro local)
     cursor.close()
 
-def inserir(conexao, stargate):
-    try:
-        # Cria um cursor
-        cursor = conexao.cursor()
-        
-        # Prepara a instrução SQL
-        query = "INSERT INTO Stargate (endereco, status_stargate, planeta) VALUES (%s, %s, %s)"
-        
-        # Executa a instrução SQL
-        cursor.execute(query, (endereco, status_stargate, planeta))
-        
-        # Faz o commit das mudanças
-        conexao.commit()
-        
-        print("Stargate inserido com sucesso.")
-
-    except psycopg2.Error as e:
-        print("Erro ao inserir Stargate no banco de dados: ", e)
-        conexao.rollback()
-    finally:
-        # Fecha o cursor
-        cursor.close()
         

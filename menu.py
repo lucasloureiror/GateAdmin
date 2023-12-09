@@ -1,4 +1,4 @@
-import database, main
+import database, main, planeta
 import stargate as stargate
 
 def start(conexao):
@@ -39,6 +39,7 @@ def processar_escolha(escolha, conexao):
         # Adicione sua lógica aqui
     elif escolha == 2:
         print("Você escolheu Planetas.")
+        planeta.menu(conexao)
         # Adicione sua lógica aqui
     elif escolha == 3:
         print("Você escolheu Recursos.")
