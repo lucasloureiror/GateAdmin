@@ -36,3 +36,25 @@ values('45341350', 'ativo', 2);
 
 insert into stargate(endereco, status_stargate)
 values('15378528', 'danificado');
+
+------------------------------------------- CONEXAO -------------------------------------------
+insert into conexao(data_hora_ativacao, data_hora_desativacao, stargate_origem, stargate_destino)
+values(
+	TO_TIMESTAMP('10/12/2023 15:01', 'DD/MM/YYYY HH24:MI'),
+	TO_TIMESTAMP('10/12/2023 15:30', 'DD/MM/YYYY HH24:MI'),
+	'32157860', '57892141'
+);
+
+insert into conexao(data_hora_ativacao, data_hora_desativacao, stargate_origem, stargate_destino)
+values(
+	TO_TIMESTAMP('10/12/2023 17:23', 'DD/MM/YYYY HH24:MI'),
+	TO_TIMESTAMP('10/12/2023 18:05', 'DD/MM/YYYY HH24:MI'),
+	'32157860', '57892141'
+);
+
+insert into conexao(data_hora_ativacao, stargate_origem, stargate_destino)
+values(
+	TO_TIMESTAMP('10/12/2023 18:30', 'DD/MM/YYYY HH24:MI'),
+	'57892141', '15378528'
+);
+

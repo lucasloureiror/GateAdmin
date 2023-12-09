@@ -43,3 +43,17 @@ create table Stargate(
 	constraint FK_STARGATE_PLANETA foreign key(planeta) references Planeta(id_planeta),
 	constraint UK_STARGATE_PLANETA unique(planeta)
 );
+
+------------------------------------------- CONEXAO -------------------------------------------
+create table Conexao(
+	data_hora_ativacao timestamp not null,
+	data_hora_desativacao timestamp,
+	stargate_origem varchar(8) not null,
+	stargate_destino varchar(8) not null,
+	constraint PK_CONEXAO primary key(data_hora_ativacao, stargate_origem),
+	constraint UK_CONEXAO_STARGATE_DESTINO unique(data_hora_ativacao, stargate_destino),
+	constraint FK_CONEXAO_STARGATE_ORIGEM foreign key(stargate_origem) references Stargate(endereco),
+	constraint FK_CONEXAO_STARGATE_DESTINO foreign key(stargate_destino) references Stargate(endereco),
+	constraint CK_ORIGEM_DESTINO check (stargate_origem <> stargate_destino)
+);
+
