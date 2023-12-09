@@ -26,7 +26,7 @@ create table Planeta(
 	nome varchar(100) not null,
 	tipo varchar(20),
 	habitabilidade varchar(20),
-	status varchar(20),
+	status_planeta varchar(20),
 	constraint PK_PLANETA primary key(id_planeta),
 	constraint FK_PLANETA_SISTEMA foreign key(galaxia, sistema) references Sistema_Estelar(galaxia, nome),
 	constraint UK_PLANETA_SISTEMA unique(galaxia, sistema, nome)
@@ -39,7 +39,7 @@ create sequence SEQ_PLANETA
 ------------------------------------------ STARGATE -------------------------------------------
 create table Stargate(
 	endereco char(8) not null,
-	status varchar(20),
+	status_stargate varchar(20),
 	planeta int,
 	constraint PK_STARGATE primary key(endereco),
 	constraint FK_STARGATE_PLANETA foreign key(planeta) references Planeta(id_planeta),

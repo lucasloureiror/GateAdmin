@@ -3,27 +3,27 @@
 --set search_path to stargate; -- Se o nome do esquema for "stargate"
 
 ------------------------------------------- GALAXIA -------------------------------------------
-insert into galaxia(nome_galaxia, tipo_galaxia)
+insert into galaxia(nome, tipo)
 values('Via Láctea', 'ESPIRAL');
 
-insert into galaxia(nome_galaxia, tipo_galaxia)
+insert into galaxia(nome, tipo)
 values('Pegasus', 'IRREGULAR');
 
 --------------------------------------- SISTEMA_ESTELAR ---------------------------------------
-insert into sistema_estelar(galaxia, nome_sistema, tipo_sistema)
+insert into sistema_estelar(galaxia, nome, tipo)
 values('Via Láctea', 'Sistema Solar', 'SOLITARIO');
 
-insert into sistema_estelar(galaxia, nome_sistema, tipo_sistema)
+insert into sistema_estelar(galaxia, nome, tipo)
 values('Pegasus', 'Sistema Lantean', 'TRIPLO');
 
 ------------------------------------------- PLANETA -------------------------------------------
-insert into planeta(id_planeta, galaxia, sistema, nome_planeta, tipo_planeta, habitabilidade, status_planeta)
+insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
 values(1, 'Via Láctea', 'Sistema Solar', 'Terra', 'ROCHOSO', 'HABITAVEL', 'intacto');
 
-insert into planeta(id_planeta, galaxia, sistema, nome_planeta, tipo_planeta, habitabilidade, status_planeta)
+insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
 values(2, 'Via Láctea', 'Sistema Solar', 'Marte', 'ROCHOSO', 'INABITAVEL', 'intacto');
 
-insert into planeta(id_planeta, galaxia, sistema, nome_planeta, tipo_planeta, habitabilidade, status_planeta)
+insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
 values(3, 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO', 'HABITAVEL', 'abandonado');
 
 ------------------------------------------ STARGATE -------------------------------------------
