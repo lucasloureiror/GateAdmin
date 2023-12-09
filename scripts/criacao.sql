@@ -4,7 +4,8 @@ set search_path to public;
 create table Galaxia(
 	nome varchar(100) not null,
 	tipo varchar(20),
-	constraint PK_GALAXIA primary key(nome)
+	constraint PK_GALAXIA primary key(nome),
+	constraint CK_TIPO check(upper(tipo) in ('ELIPTICA', 'ESPIRAL', 'IRREGULAR'))
 );
 
 --------------------------------------- SISTEMA_ESTELAR ---------------------------------------
@@ -29,7 +30,8 @@ create table Planeta(
 	constraint PK_PLANETA primary key(id_planeta),
 	constraint UK_PLANETA_SISTEMA unique(galaxia, sistema, nome),
 	constraint FK_PLANETA_SISTEMA foreign key(galaxia, sistema) references Sistema_Estelar(galaxia, nome)
-		on update cascade on delete cascade
+		on update cascade on delete cascade,
+	constraint CK_TIPO check(upper(tipo) in ('ROCHOSO', 'GASOSO'))
 );
 
 create sequence SEQ_PLANETA
@@ -97,5 +99,15 @@ create table Remessa(
 	constraint CK_QUANTIDADE check(quantidade > 0),
 	constraint CK_VALOR_UNITARIO check(valor_unitario > 0),
 	constraint CK_VALOR_TOTAL check(valor_total > 0)
+);
+
+----------------------------------------- CIVILIZACAO -----------------------------------------
+create table Civilizacao(
+	nome varchar(100) not null,
+	lingua varchar(20),
+	nivel_tecnologico varchar(20),
+	nivel_agressividade varchar(20),
+	status_civilizacao varchar(20),
+	constraint PK_CIVILIZACAO primary key(nome)
 );
 

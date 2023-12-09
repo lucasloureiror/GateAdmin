@@ -10,7 +10,8 @@ select * from recurso rec;
 
 select * from stargate s;
 
-select * from conexao c;
+select * from conexao con;
 
 select * from remessa rem;
 
+select * from civilizacao civ;

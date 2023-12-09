@@ -98,3 +98,11 @@ values(
 	TO_TIMESTAMP('10/12/2023 17:23', 'DD/MM/YYYY HH24:MI'), '32157860',
 	3, 60000, 180000
 );
+
+----------------------------------------- CIVILIZACAO -----------------------------------------
+insert into civilizacao(nome, lingua, nivel_tecnologico, nivel_agressividade, status_civilizacao)
+values('Humanos', 'inglês', 'MEDIANO', 'MEDIANO', 'existente');
+
+insert into civilizacao(nome, lingua, nivel_tecnologico, nivel_agressividade, status_civilizacao)
+values('Lantianos', 'ancient', 'AVANÇADO', 'BAIXO', 'destruída');
+
