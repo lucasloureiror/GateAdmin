@@ -24,19 +24,6 @@ values(nextval('seq_planeta'), 'Via Láctea', 'Sistema Solar', 'Marte', 'ROCHOSO
 insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
 values(nextval('seq_planeta'), 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO', 'HABITAVEL', 'abandonado');
 
------------------------------------------- STARGATE -------------------------------------------
-insert into stargate(endereco, status_stargate, planeta)
-values('32157860', 'ativo', 1);
-
-insert into stargate(endereco, status_stargate, planeta)
-values('57892141', 'ativo', 3);
-
-insert into stargate(endereco, status_stargate, planeta)
-values('45341350', 'ativo', 2);
-
-insert into stargate(endereco, status_stargate)
-values('15378528', 'danificado');
-
 ------------------------------------------- RECURSO -------------------------------------------
 insert into recurso(planeta, codigo, nome, abundancia, origem)
 values(1, '1784', 'Arma de fogo', 'ABUNDANTE', 'TECNOLOGICO');
@@ -49,6 +36,19 @@ values(1, '301', 'Carvão mineral', 'ABUNDANTE', 'NATURAL');
 
 insert into recurso(planeta, codigo, nome, abundancia, origem)
 values(1, '562', 'Diamante', 'ESCASSO', 'NATURAL');
+
+------------------------------------------ STARGATE -------------------------------------------
+insert into stargate(endereco, status_stargate, planeta)
+values('32157860', 'ativo', 1);
+
+insert into stargate(endereco, status_stargate, planeta)
+values('57892141', 'ativo', 3);
+
+insert into stargate(endereco, status_stargate, planeta)
+values('45341350', 'ativo', 2);
+
+insert into stargate(endereco, status_stargate)
+values('15378528', 'danificado');
 
 ------------------------------------------- CONEXAO -------------------------------------------
 insert into conexao(data_hora_ativacao, data_hora_desativacao, stargate_origem, stargate_destino)
