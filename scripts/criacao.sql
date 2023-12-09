@@ -54,8 +54,7 @@ create table Conexao(
 	constraint UK_CONEXAO_STARGATE_DESTINO unique(data_hora_ativacao, stargate_destino),
 	constraint FK_CONEXAO_STARGATE_ORIGEM foreign key(stargate_origem) references Stargate(endereco),
 	constraint FK_CONEXAO_STARGATE_DESTINO foreign key(stargate_destino) references Stargate(endereco),
-	constraint CK_ORIGEM_DESTINO check (stargate_origem <> stargate_destino),
-	constraint CK_ATIVACAO_DESATIVACAO check (data_hora_desativacao > data_hora_ativacao)
+	constraint CK_ORIGEM_DESTINO check (stargate_origem <> stargate_destino)
 );
 
 
