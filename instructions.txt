@@ -1,3 +1,14 @@
+PYTHON PRECISA RODAR ISSO ANTES
+
 pip install psycopg2-binary
 ou
 pip3 install psycopg2-binary
+
+
+DOCKERFILE O FLUXO É
+make docker-build
+make docker-run
+
+Se quiser parar: make docker-stop
+
+Se quiser reiniciar o container: make docker-restart

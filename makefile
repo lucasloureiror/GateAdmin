@@ -15,9 +15,12 @@ docker-build:
 docker-run:
 	docker run --name $(CONTAINER_NAME) -p $(PORT):$(PORT) -d $(IMAGE_NAME)
 
+docker-restart:
+    docker restart $(CONTAINER_NAME)
+
 docker-stop:
 	docker stop $(CONTAINER_NAME)
-	docker rm $(CONTAINER_NAME)
-# Remove a imagem Docker
+
 clean:
+	docker rm $(CONTAINER_NAME)
 	docker rmi $(IMAGE_NAME)
