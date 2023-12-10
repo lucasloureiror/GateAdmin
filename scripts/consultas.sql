@@ -22,3 +22,7 @@ select * from civilizacao_vive_planeta cvp;
 
 select * from recurso_natural rn;
 
+select * from recurso_tecnologico rt;
+
+select * from tipo_tecnologico tt;
+

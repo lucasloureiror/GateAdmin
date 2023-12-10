@@ -141,12 +141,34 @@ create table Civilizacao_vive_Planeta(
 );
 
 ------------------------------------------- NATURAL -------------------------------------------
+-- Essa tabela não foi nomeada somente de 'Natural', pois esta é uma palavra reservada
 create table Recurso_Natural(
 	planeta int not null,
 	recurso varchar(9) not null,
 	tipo varchar(20),
 	constraint PK_NATURAL primary key(planeta, recurso),
 	constraint FK_NATURAL_RECURSO foreign key(planeta, recurso) references Recurso(planeta, codigo)
+		on update cascade on delete cascade
+);
+
+----------------------------------------- TECNOLOGICO -----------------------------------------
+-- Essa tabela foi nomeada como 'Recurso_Tecnologico' para manter o padrão da tabela anterior
+create table Recurso_Tecnologico(
+	planeta int not null,
+	recurso varchar(9) not null,
+	constraint PK_TECNOLOGICO primary key(planeta, recurso),
+	constraint FK_TECNOLOGICO_RECURSO foreign key(planeta, recurso) references Recurso(planeta, codigo)
+		on update cascade on delete cascade
+);
+
+-------------------------------------- TIPO_TECNOLOGICO ---------------------------------------
+create table Tipo_Tecnologico(
+	planeta int not null,
+	recurso varchar(9) not null,
+	tipo varchar(20) not null,
+	constraint PK_TIPO_TECNOLOGICO primary key(planeta, recurso, tipo),
+	constraint FK_RECURSO_TECNOLOGICO foreign key(planeta, recurso) 
+		references Recurso_Tecnologico(planeta, recurso)
 		on update cascade on delete cascade
 );
 

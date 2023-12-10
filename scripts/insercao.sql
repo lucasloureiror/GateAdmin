@@ -127,3 +127,17 @@ values(1, '301', 'MINERAL');
 insert into recurso_natural(planeta, recurso, tipo)
 values(1, '562', 'MINERAL');
 
+----------------------------------------- TECNOLOGICO -----------------------------------------
+insert into recurso_tecnologico(planeta, recurso)
+values(1, '1784');
+
+insert into recurso_tecnologico(planeta, recurso)
+values(1, '2690');
+
+-------------------------------------- TIPO_TECNOLOGICO ---------------------------------------
+insert into tipo_tecnologico(planeta, recurso, tipo)
+values(1, '1784', 'MILITAR');
+
+insert into tipo_tecnologico(planeta, recurso, tipo)
+values(1, '2690', 'COMPUTACIONAL');
+
