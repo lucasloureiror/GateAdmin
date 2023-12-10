@@ -72,11 +72,32 @@ def processar_escolha(escolha, conexao):
     elif escolha == 2:
         m.limpar_tela()
         print("Você escolheu buscar um planeta.")
-        # Aqui você pode solicitar ao usuário mais informações para a busca
-        parametro = input("Digite o parâmetro de busca (id_planeta, galaxia, sistema, nome): ")
+        
+        # Exibindo opções de atributos para o usuário
+        atributos = {
+            "1": "id_planeta",
+            "2": "galaxia",
+            "3": "sistema",
+            "4": "nome",
+            "5": "tipo",
+            "6": "habitabilidade",
+            "7": "status_planeta"
+        }
+        print("Escolha um atributo para buscar:")
+        for key, value in atributos.items():
+            print(f"{key}. {value}")
+
+        escolha_atributo = input("Digite o número do atributo: ")
+        parametro = atributos.get(escolha_atributo, None)
+
+        # Verifica se a escolha é válida
+        if parametro is None:
+            print("Escolha inválida.")
+            return
+
         valor = input(f"Digite o valor para {parametro}: ")
-        m.limpar_tela()
-        buscar_planeta(conexao, parametro, valor)
+        resultado = buscar_planeta(conexao, parametro, valor)
+        imprimir(resultado, None)
         m.limpar_tela()
         menu(conexao)
 
@@ -111,17 +132,22 @@ def listar(conexao):
         input("Aperte enter para continuar")
         return
     planetas = [Planeta(*registro) for registro in registros]
-    imprimir_planetas(planetas)
+    imprimir(planetas, None)
 
 def buscar_planeta(conexao, parametro, valor):
-    query = f"SELECT * FROM Planeta WHERE {parametro} = %s"
+    if isinstance(valor, str):
+        # Query agnóstica ao tipo de case da string
+        query = f"SELECT * FROM Planeta WHERE upper({parametro}) = upper(%s)"
+    else:
+        query = f"SELECT * FROM Planeta WHERE {parametro} = %s"
+    
     registros, erro = database.consulta(conexao, query, valor)
     if erro is not None:
         print("Ocorreu um erro na busca:", erro)
         input("Aperte enter para continuar")
         return
     planetas = [Planeta(*registro) for registro in registros]
-    imprimir_planetas(planetas)
+    return planetas
 
 def inserir_planeta(conexao, planeta):
     if not planeta.validar():
@@ -139,9 +165,11 @@ def inserir_planeta(conexao, planeta):
     input("Aperte enter para continuar")
 
 
-def imprimir_planetas(planetas):
+def imprimir(planetas, fields):
+    if fields is None:
+        fields = ["ID", "Galáxia", "Sistema", "Nome", "Tipo", "Habitabilidade", "Status"]
     tabela = PrettyTable()
-    tabela.field_names = ["ID", "Galáxia", "Sistema", "Nome", "Tipo", "Habitabilidade", "Status"]
+    tabela.field_names = fields
     for planeta in planetas:
         tabela.add_row([planeta.id_planeta, planeta.galaxia, planeta.sistema, planeta.nome, planeta.tipo, planeta.habitabilidade, planeta.status_planeta])
     print(tabela)

@@ -1,4 +1,4 @@
-import database, main, menu as m
+import database, main, menu as m, planeta as p
 from prettytable import PrettyTable
 
 class Stargate:
@@ -11,6 +11,8 @@ class Stargate:
         # Verifica se o endereço tem 8 caracteres
         if len(self.endereco) != 8:
             return False
+        
+        return True
         
     def __repr__(self):
         return f"Stargate(endereco='{self.endereco}', status_stargate='{self.status_stargate}', planeta={self.planeta})"
@@ -68,7 +70,24 @@ def processar_escolha(escolha, conexao):
         buscar(conexao, parametro, valor)
         menu(conexao)
     elif escolha == 3:
+        m.limpar_tela()
         print("Você escolheu inserir Stargate.")
+        endereco = input("Digite o endereco do Stargate: ")
+        status = input("Digite o Status do Stargate: ")
+        planeta = input("Digite o ID numérico ou o nome do planeta: ")
+        if isinstance(planeta, str):
+            resultado = p.buscar_planeta(conexao, "nome", planeta)
+            if len(resultado) > 1:
+                m.limpar_tela()
+                print("Mais de um planeta foi encontrado com esse nome, a inserção deverá ser feita por ID!")
+                input("Aperte enter para voltar ao menu")
+                return
+            else:
+                planeta = resultado[0].id_planeta
+        
+        novo_stargate = Stargate(endereco, status, planeta)
+        inserir(conexao, novo_stargate)
+        menu(conexao)
     elif escolha == 4:
         m.limpar_tela()
         m.start(conexao)
@@ -119,4 +138,18 @@ def buscar(conexao, parametro, valor):
     print(f"Exibindo resultados da busca de Stargate com {parametro} igual a {valor}")
     imprimir_stargates(stargates)
 
+def inserir(conexao, stargate):
+    if not stargate.validar():
+        input("Aperte enter para sair")
+        return
+    valores = (stargate.endereco, stargate.status_stargate, stargate.planeta)
+    query = "insert into stargate(endereco, status_stargate, planeta) values(%s, %s, %s);"
+    resultado = database.insercao(conexao, query, valores)
+    if resultado is not True:
+        print("Ocorreu um erro na inserção do stargate: ", resultado)
+        input("Aperte enter para continuar")
+        return
+    
+    print("\nstargate inserido com sucesso!")
+    input("Aperte enter para continuar")
         
