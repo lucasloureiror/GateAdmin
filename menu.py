@@ -38,7 +38,7 @@ def processar_escolha(escolha, conexao):
         print("Você escolheu Planetas.")
         planeta.menu(conexao) 
     elif escolha == 3:
-        print("Você escolheu Recursos.")
+        main.sair(conexao)
     elif escolha == 42:
         database.init_data(conexao)
         print("Dados inicializados!")
