@@ -187,3 +187,16 @@ create table Tecnologico_Natural(
 		on update cascade on delete cascade
 );
 
+---------------------------------------- PROCESSAMENTO ----------------------------------------
+create table Processamento(
+	civilizacao varchar(100) not null,
+	planeta int not null,
+	recurso_tecnologico varchar(9) not null,
+	constraint PK_PROCESSAMENTO primary key(civilizacao, planeta, recurso_tecnologico),
+	constraint FK_PROCESSAMENTO_CIVILIZACAO foreign key(civilizacao) references Civilizacao(nome)
+		on update cascade on delete cascade,
+	constraint FK_PROCESSAMENTO_TECNOLOGICO foreign key(planeta, recurso_tecnologico)
+		references Recurso_Tecnologico(planeta, recurso)
+		on update cascade on delete cascade
+);
+

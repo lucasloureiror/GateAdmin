@@ -145,3 +145,7 @@ values(1, '2690', 'COMPUTACIONAL');
 --insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
 --values();
 
+---------------------------------------- PROCESSAMENTO ----------------------------------------
+--insert into processamento(civilizacao, planeta, recurso_tecnologico)
+--values();
+
