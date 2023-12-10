@@ -1,4 +1,4 @@
-PYTHON PRECISA RODAR ISSO ANTES
+PYTHON PRECISA DESSES PACOTES A DEPENDER DO SISTEMA
 
 pip install psycopg2-binary
 pip install prettytable
@@ -6,6 +6,12 @@ ou
 pip3 install psycopg2-binary
 pip3 install prettytable
 
+
+PARA RODAR O PROGRAMA
+python3 main.py
+
+PASTA SCRIPTS
+Contém os scripts de criação de tabelas e inserção de dados, bem como de consulta.
 
 DOCKERFILE O FLUXO É
 make docker-build
