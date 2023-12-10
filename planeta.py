@@ -106,7 +106,6 @@ def processar_escolha(escolha, conexao):
     elif escolha == 3:
         m.limpar_tela()
         print("Você escolheu inserir um novo planeta.")
-        # Aqui você solicita os dados do planeta ao usuário
         galaxia = input("Digite o nome da galáxia: ")
         sistema = input("Digite o nome do sistema: ")
         nome = input("Digite o nome do planeta: ")

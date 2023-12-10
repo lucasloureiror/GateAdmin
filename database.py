@@ -4,8 +4,8 @@ def start_connection():
         conn = psycopg2.connect(
         dbname="postgres",
         user="gate_admin",
-        password="usp123",
-        host="localhost" # ou o endereço do servidor de banco de dados
+        password="usp123", #Sabemos que o ideal não seria deixar aqui a senha, mas sim colocar como variável de ambiente.
+        host="localhost"
     )
     except psycopg2.Error as e:
         print("Erro ao conectar ao banco de dados PostgreSQL: ", e)
