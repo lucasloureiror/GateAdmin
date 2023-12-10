@@ -1,5 +1,27 @@
 set search_path to public;
 
+-- CONSULTAS
+select rec.planeta, rec.codigo, rec.nome, rec.origem, nat.tipo, ttec.tipo, rec.abundancia
+from recurso rec
+left join recurso_natural nat 
+	on rec.planeta = nat.planeta and rec.codigo = nat.recurso
+left join recurso_tecnologico tec
+	on rec.planeta = tec.planeta and rec.codigo = tec.recurso
+left join tipo_tecnologico ttec 
+	on tec.planeta = ttec.planeta and tec.recurso = ttec.recurso
+order by rec.origem asc;
+
+delete from recurso where planeta = 1;
+
+select tt.planeta, tt.recurso, rec.nome, rec.abundancia, rec.origem, tt.tipo
+from tipo_tecnologico tt
+inner join recurso_tecnologico rt 
+	on rt.planeta = tt.planeta and rt.recurso = tt.recurso
+inner join recurso rec
+	on rec.planeta = rt.planeta and rec.codigo = rt.recurso;
+
+
+-- Visualização de todas as tabelas separadas
 select * from galaxia g;
 
 select * from sistema_estelar se;
@@ -40,23 +62,4 @@ select * from computacional;
 
 select * from tecnologico_natural tn;
 
-
--- CONSULTAS
-select rec.planeta, rec.codigo, rec.nome, rec.origem, nat.tipo, ttec.tipo, rec.abundancia
-from recurso rec
-left join recurso_natural nat 
-	on rec.planeta = nat.planeta and rec.codigo = nat.recurso
-left join recurso_tecnologico tec
-	on rec.planeta = tec.planeta and rec.codigo = tec.recurso
-left join tipo_tecnologico ttec 
-	on tec.planeta = ttec.planeta and tec.recurso = ttec.recurso
-order by rec.origem asc;
-
-delete from recurso where planeta = 1;
-
-select tt.planeta, tt.recurso, rec.nome, rec.abundancia, rec.origem, tt.tipo
-from tipo_tecnologico tt
-inner join recurso_tecnologico rt 
-	on rt.planeta = tt.planeta and rt.recurso = tt.recurso
-inner join recurso rec
-	on rec.planeta = rt.planeta and rec.codigo = rt.recurso;
+select * from processamento;

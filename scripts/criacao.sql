@@ -284,4 +284,3 @@ create table Processamento(
 		references Recurso_Tecnologico(planeta, recurso)
 		on update cascade on delete cascade
 );
-

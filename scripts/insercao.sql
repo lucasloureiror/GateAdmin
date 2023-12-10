@@ -265,10 +265,27 @@ insert into Computacional(planeta, recurso, capacidade_processamento, consumo_en
 values(1, '1232', 'MUITO ALTA', 'BAIXO', 'Sistema embarcado', 'Integração em dispositivos eletrônicos, automação de processos industriais.');
 
 ------------------------------------- TECNOLOGICO_NATURAL -------------------------------------
---insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
---values();
+insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
+values(1, '1232', 1, '651');
+
+insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
+values(1, '9876', 1, '651');
 
 ---------------------------------------- PROCESSAMENTO ----------------------------------------
---insert into processamento(civilizacao, planeta, recurso_tecnologico)
---values();
+insert into processamento(civilizacao, planeta, recurso_tecnologico)
+values('Humanos', 1, '1784');
 
+insert into processamento(civilizacao, planeta, recurso_tecnologico)
+values('Humanos', 1, '3456');
+
+insert into processamento(civilizacao, planeta, recurso_tecnologico)
+values('Humanos', 1, '9876');
+
+insert into processamento(civilizacao, planeta, recurso_tecnologico)
+values('Humanos', 1, '5432');
+
+insert into processamento(civilizacao, planeta, recurso_tecnologico)
+values('Humanos', 1, '2690');
+
+insert into processamento(civilizacao, planeta, recurso_tecnologico)
+values('Humanos', 1, '1232');
