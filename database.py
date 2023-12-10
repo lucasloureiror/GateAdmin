@@ -12,7 +12,6 @@ def start_connection():
         exit()
   
     else:
-        print("Conexão estabelecida com sucesso.")
         return conn
     
 def init_data(conexao):

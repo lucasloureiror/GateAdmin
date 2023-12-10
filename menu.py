@@ -47,3 +47,10 @@ def limpar_tela():
     # Limpa a tela (funciona em sistemas Unix e Windows)
     import os
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def verificar_int(valor):
+    try:
+        valor = int(valor)
+        return valor
+    except ValueError:
+        return valor

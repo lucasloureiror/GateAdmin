@@ -67,6 +67,7 @@ def processar_escolha(escolha, conexao):
             return
 
         valor = input(f"Digite o valor para {parametro}: ")
+        valor = m.verificar_int(valor)
         buscar(conexao, parametro, valor)
         menu(conexao)
     elif escolha == 3:
@@ -107,9 +108,9 @@ def listar(conexao):
     stargates = [Stargate(*registro) for registro in registros]
     m.limpar_tela()
     print("Listando todos os stargates")
-    imprimir_stargates(stargates)
+    imprimir_stargates(stargates, None)
 
-def imprimir_stargates(stargates):
+def imprimir_stargates(stargates, fields):
     #Usando o pretty table para a impressão
     tabela = PrettyTable()
     tabela.field_names = ["Endereço", "Status", "Planeta"]
@@ -136,7 +137,7 @@ def buscar(conexao, parametro, valor):
     stargates = [Stargate(*registro) for registro in registros]
     m.limpar_tela()
     print(f"Exibindo resultados da busca de Stargate com {parametro} igual a {valor}")
-    imprimir_stargates(stargates)
+    imprimir_stargates(stargates, None)
 
 def inserir(conexao, stargate):
     if not stargate.validar():

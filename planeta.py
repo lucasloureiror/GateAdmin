@@ -96,6 +96,7 @@ def processar_escolha(escolha, conexao):
             return
 
         valor = input(f"Digite o valor para {parametro}: ")
+        valor = m.verificar_int(valor)
         resultado = buscar_planeta(conexao, parametro, valor)
         imprimir(resultado, None)
         m.limpar_tela()
