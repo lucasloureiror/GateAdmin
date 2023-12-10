@@ -214,6 +214,49 @@ create table Tipo_Tecnologico(
 		on update cascade on delete cascade
 );
 
+------------------------------------------- MILITAR -------------------------------------------
+create table Militar(
+	planeta int not null,
+	recurso varchar(9) not null,
+	capacidade_dano varchar(20),
+	fonte_energia varchar(50),
+	alcance varchar(50),
+	modo_operacao varchar(22),
+	constraint PK_MILITAR primary key(planeta, recurso),
+	constraint FK_MILITAR_TECNOLOGICO foreign key(planeta, recurso)
+		references Recurso_Tecnologico(planeta, recurso)
+		on update cascade on delete cascade,
+	constraint CK_MODO_OPERACAO check(upper(modo_operacao) in ('AUTOMATICO', 'MANUAL', 'CONTROLADO REMOTAMENTE'))
+);
+
+------------------------------------------- MEDICA --------------------------------------------
+create table Medica(
+	planeta int not null,
+	recurso varchar(9) not null,
+	finalidade varchar(255),
+	funcionamento varchar(255),
+	compatibilidade_fisiologica varchar(255),
+	efeitos_colaterais varchar(255),
+	constraint PK_MEDICA primary key(planeta, recurso),
+	constraint FK_MEDICA_TECNOLOGICO foreign key(planeta, recurso)
+		references Recurso_Tecnologico(planeta, recurso)
+		on update cascade on delete cascade
+);
+
+---------------------------------------- COMPUTACIONAL ----------------------------------------
+create table Computacional(
+	planeta int not null,
+	recurso varchar(9) not null,
+	capacidade_processamento varchar(20),
+	consumo_energetico varchar(20),
+	sistema_operacional varchar(100),
+	aplicacoes_principais varchar(255),
+	constraint PK_COMPUTACIONAL primary key(planeta, recurso),
+	constraint FK_COMPUTACIONAL_TECNOLOGICO foreign key(planeta, recurso)
+		references Recurso_Tecnologico(planeta, recurso)
+		on update cascade on delete cascade
+);
+
 ------------------------------------- TECNOLOGICO_NATURAL -------------------------------------
 create table Tecnologico_Natural(
 	planeta_tec int not null,
