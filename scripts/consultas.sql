@@ -55,7 +55,8 @@ group by G.tipo;
 
 
 -- Consulta 5: Civilizações com Acesso a Recursos Tecnológicos Avançados
--- Esta consulta foca em civilizações que têm acesso a recursos tecnológicos de um certo nível.
+-- Esta consulta mostra quais civilizações têm acesso a recursos tecnológicos de um certo tipo,
+-- utilizando subqueries e inner joins.
 select C.nome
 from Civilizacao C
 where exists(
@@ -63,12 +64,13 @@ where exists(
     from Processamento P
     inner join Recurso_Tecnologico RT on P.planeta = RT.planeta and P.recurso_tecnologico = RT.recurso
     inner join Tipo_Tecnologico TT on RT.planeta = TT.planeta and RT.recurso = TT.recurso
-    where P.civilizacao = C.nome and TT.tipo = 'MEDICA' -- Substituir 'TipoAvançado' pelo tipo desejado
+    where P.civilizacao = C.nome and TT.tipo = 'MEDICA' -- Substituir 'MEDICA' pelo tipo desejado
 );
 
 
 -- Consulta 6: Tipos dos Recursos Naturais e Tecnológicos
--- Esta consulta mostra todos os tipos de todos os recursos, ordenados por ordem crescente de origem.
+-- Esta consulta utiliza left joins para mostrar qual o tipo de de cada recurso, tecnológico ou natural,
+-- ordenados por ordem crescente de origem.
 select Rec.planeta, Rec.codigo, Rec.nome, Rec.origem, nat.tipo, ttec.tipo
 from Recurso Rec
 left join Recurso_Natural Nat 
