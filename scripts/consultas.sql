@@ -1,36 +1,73 @@
 set search_path to public;
 
-select * from galaxia g;
+-- CONSULTAS
+-- Mostra todos os recursos associados com sua origem e tipo, ordenados por ordem crescente de origem:
+select rec.planeta, rec.codigo, rec.nome, rec.origem, nat.tipo, ttec.tipo
+from recurso rec
+left join recurso_natural nat 
+	on rec.planeta = nat.planeta and rec.codigo = nat.recurso
+left join recurso_tecnologico tec
+	on rec.planeta = tec.planeta and rec.codigo = tec.recurso
+left join tipo_tecnologico ttec 
+	on tec.planeta = ttec.planeta and tec.recurso = ttec.recurso
+order by rec.origem asc;
 
-select * from sistema_estelar se;
+-- Mostra todos os recursos naturais com seus tipos, ordenados por ordem crescente de tipo:
+select rec.planeta, rec.codigo, rec.nome, rec.abundancia, rec.origem, nat.tipo
+from recurso rec
+inner join recurso_natural nat 
+	on rec.planeta = nat.planeta and rec.codigo = nat.recurso
+order by nat.tipo;
 
-select * from planeta p;
+-- Mostra todos os recursos tecnológicos com seus tipos, ordenados por ordem crescente de tipo:
+select rec.planeta, rec.codigo, rec.nome, rec.abundancia, rec.origem, ttec.tipo
+from recurso rec
+inner join recurso_tecnologico tec
+	on rec.planeta = tec.planeta and rec.codigo = tec.recurso
+inner join tipo_tecnologico ttec 
+	on tec.planeta = ttec.planeta and tec.recurso = ttec.recurso
+order by ttec.tipo asc;
 
-select * from recurso rec;
 
-select * from stargate s;
+-- Visualização de todas as tabelas separadas
+select * from galaxia;
 
-select * from conexao con;
+select * from sistema_estelar;
 
-select * from remessa rem;
+select * from planeta;
 
-select * from civilizacao civ;
+select * from recurso;
 
-select * from especie e;
+select * from stargate;
 
-select * from civilizacao_vive_planeta cvp;
+select * from conexao;
 
-select * from recurso_natural rn;
+select * from remessa;
 
-select * from recurso_tecnologico rt;
+select * from civilizacao;
 
-select * from tipo_tecnologico tt;
+select * from especie;
 
-select * from tecnologico_natural tn;
+select * from civilizacao_vive_planeta;
 
-select tt.planeta, tt.recurso, rec.nome, rec.abundancia, rec.origem, tt.tipo
-from tipo_tecnologico tt
-inner join recurso_tecnologico rt 
-	on rt.planeta = tt.planeta and rt.recurso = tt.recurso
-inner join recurso rec
-	on rec.planeta = rt.planeta and rec.codigo = rt.recurso;
+select * from recurso_natural;
+
+select * from mineral;
+
+select * from animal;
+
+select * from vegetal;
+
+select * from recurso_tecnologico;
+
+select * from tipo_tecnologico;
+
+select * from militar;
+
+select * from medica;
+
+select * from computacional;
+
+select * from tecnologico_natural;
+
+select * from processamento;
