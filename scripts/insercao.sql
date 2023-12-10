@@ -127,6 +127,18 @@ values(1, '301', 'VEGETAL');
 insert into recurso_natural(planeta, recurso, tipo)
 values(1, '562', 'MINERAL');
 
+------------------------------------------- MINERAL -------------------------------------------
+--insert into mineral(planeta, recurso, composicao, pureza, cor, dureza)
+--values();
+
+------------------------------------------- ANIMAL --------------------------------------------
+--insert into animal(planeta, recurso, bioma, dieta, nivel_ameaca)
+--values();
+
+------------------------------------------- VEGETAL -------------------------------------------
+--insert into vegetal(planeta, recurso, toxicidade, bioma, utilizacao, propriedades_medicinais)
+--values();
+
 ----------------------------------------- TECNOLOGICO -----------------------------------------
 insert into recurso_tecnologico(planeta, recurso)
 values(1, '1784');

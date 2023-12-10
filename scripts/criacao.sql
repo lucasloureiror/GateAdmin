@@ -151,8 +151,50 @@ create table Recurso_Natural(
 		on update cascade on delete cascade
 );
 
+------------------------------------------- MINERAL -------------------------------------------
+create table Mineral(
+	planeta int not null,
+	recurso varchar(9) not null,
+	composicao varchar(255),
+	pureza varchar(50),
+	cor varchar(50),
+	dureza varchar(50),
+	constraint PK_MINERAL primary key(planeta, recurso),
+	constraint FK_MINERAL_NATURAL foreign key(planeta, recurso) 
+		references Recurso_Natural(planeta, recurso)
+		on update cascade on delete cascade 
+);
+
+------------------------------------------- ANIMAL --------------------------------------------
+create table Animal(
+	planeta int not null,
+	recurso varchar(9) not null,
+	especie varchar(100),
+	bioma varchar(100),
+	dieta varchar(100),
+	nivel_ameaca varchar(20),
+	constraint PK_ANIMAL primary key(planeta, recurso),
+	constraint FK_ANIMAL_NATURAL foreign key(planeta, recurso) 
+		references Recurso_Natural(planeta, recurso)
+		on update cascade on delete cascade 
+);
+
+------------------------------------------- VEGETAL -------------------------------------------
+create table Vegetal(
+	planeta int not null,
+	recurso varchar(9) not null,
+	toxicidade varchar(20),
+	bioma varchar(100),
+	utilizacao varchar(255),
+	propriedades_medicinais varchar(255),
+	constraint PK_VEGETAL primary key(planeta, recurso),
+	constraint FK_VEGETAL_NATURAL foreign key(planeta, recurso) 
+		references Recurso_Natural(planeta, recurso)
+		on update cascade on delete cascade 
+);
+
 ----------------------------------------- TECNOLOGICO -----------------------------------------
--- Essa tabela foi nomeada como 'Recurso_Tecnologico' para manter o padrão da tabela anterior
+-- Essa tabela foi nomeada como 'Recurso_Tecnologico' para manter o padrão da tabela 'Recurso_Natural'
 create table Recurso_Tecnologico(
 	planeta int not null,
 	recurso varchar(9) not null,
