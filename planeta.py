@@ -65,11 +65,12 @@ def processar_escolha(escolha, conexao):
     if escolha == 1:
         m.limpar_tela()
         print("Você escolheu listar todos os planetas.")
-        listar_planetas(conexao)
+        listar(conexao)
         m.limpar_tela()
         menu(conexao)
 
     elif escolha == 2:
+        m.limpar_tela()
         print("Você escolheu buscar um planeta.")
         # Aqui você pode solicitar ao usuário mais informações para a busca
         parametro = input("Digite o parâmetro de busca (id_planeta, galaxia, sistema, nome): ")
@@ -102,23 +103,25 @@ def processar_escolha(escolha, conexao):
         main.sair(conexao)
        
 
-def listar_planetas(conexao):
+def listar(conexao):
     query = "SELECT * FROM Planeta;"
-    cursor = conexao.cursor()
-    cursor.execute(query)
-    registros = cursor.fetchall()
+    registros, erro = database.consulta(conexao, query, None)
+    if erro is not None:
+        print("Ocorreu um erro na listagem:", erro)
+        input("Aperte enter para continuar")
+        return
     planetas = [Planeta(*registro) for registro in registros]
     imprimir_planetas(planetas)
-    cursor.close()
 
 def buscar_planeta(conexao, parametro, valor):
     query = f"SELECT * FROM Planeta WHERE {parametro} = %s"
-    cursor = conexao.cursor()
-    cursor.execute(query, (valor,))
-    registros = cursor.fetchall()
+    registros, erro = database.consulta(conexao, query, valor)
+    if erro is not None:
+        print("Ocorreu um erro na busca:", erro)
+        input("Aperte enter para continuar")
+        return
     planetas = [Planeta(*registro) for registro in registros]
     imprimir_planetas(planetas)
-    cursor.close()
 
 def inserir_planeta(conexao, planeta):
     if not planeta.validar():

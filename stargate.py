@@ -42,12 +42,7 @@ def menu(conexao):
 def processar_escolha(escolha, conexao):
     if escolha == 1:
         print("Você escolheu listar todos os stargates.")
-        query = "SELECT * FROM STARGATE;"
-        registros = database.consulta(conexao, query)
-        stargates = [Stargate(*registro) for registro in registros]
-        m.limpar_tela()
-        print("Listando todos os stargates")
-        imprimir_stargates(stargates)
+        listar(conexao)
         menu(conexao)
 
     elif escolha == 2:
@@ -55,7 +50,7 @@ def processar_escolha(escolha, conexao):
         print("Escolha o parâmetro de busca:")
         print("1. Endereço")
         print("2. Status do Stargate")
-        print("3. Planeta")
+        print("3. ID do Planeta")
         escolha = input("Digite o número do parâmetro: ")
 
         parametro = ""
@@ -83,6 +78,17 @@ def processar_escolha(escolha, conexao):
         main.sair(conexao)
         
 
+def listar(conexao):
+    query = "SELECT * FROM STARGATE;"
+    registros, erro = database.consulta(conexao, query, None)
+    if erro is not None:
+        print("Ocorreu um erro na listagem dos Stargates", erro)
+        input("Pressione enter para continuar")
+        return
+    stargates = [Stargate(*registro) for registro in registros]
+    m.limpar_tela()
+    print("Listando todos os stargates")
+    imprimir_stargates(stargates)
 
 def imprimir_stargates(stargates):
     #Usando o pretty table para a impressão
@@ -92,7 +98,7 @@ def imprimir_stargates(stargates):
     for stargate in stargates:
         tabela.add_row([stargate.endereco, stargate.status_stargate, stargate.planeta])
     print(tabela)
-    print("Faça a análise dos dados, anote o que for necessário e aperte qualquer tecla para retornar ao menu.")
+    print("Faça a análise dos dados, anote o que for necessário e aperte enter para retornar ao menu.")
     input()
 
 def buscar(conexao, parametro, valor):
@@ -102,16 +108,15 @@ def buscar(conexao, parametro, valor):
         query = f"SELECT * FROM Stargate WHERE upper({parametro}) = upper(%s)"
     else:
         query = f"SELECT * FROM Stargate WHERE {parametro} = %s"
-    cursor = conexao.cursor()
-    cursor.execute(query, (valor,))
-    registros = cursor.fetchall()
-
+    
+    registros, erro = database.consulta(conexao, query, valor)
+    if erro is not None:
+        print("Ocorreu um erro na consulta:", erro)
+        input("Aperte enter para continuar")
+        return
     stargates = [Stargate(*registro) for registro in registros]
     m.limpar_tela()
     print(f"Exibindo resultados da busca de Stargate com {parametro} igual a {valor}")
     imprimir_stargates(stargates)
-
-    # Fecha o cursor após o uso (a conexão pode ser fechada em outro local)
-    cursor.close()
 
         

@@ -27,14 +27,22 @@ def init_data(conexao):
             conexao.commit()  # Garante que as alterações sejam salvas
     except psycopg2.Error as e:
         print("Erro ao executar o script SQL: ", e)
-    cursor.close()
+        
+    finally:
+        cursor.close()
 
-def consulta(conexao, query):
-     cursor = conexao.cursor()
-     cursor.execute(query)
-     registros = cursor.fetchall()
-     cursor.close()
-     return registros
+def consulta(conexao, query, valor):
+    cursor = conexao.cursor()
+    try:
+        cursor.execute(query,(valor,))
+        registros = cursor.fetchall()
+        return registros, None
+    
+    except psycopg2.Error as e:
+        return None, e
+
+    finally:
+        cursor.close()
 
 def insercao(conexao, query, valor): 
     cursor = conexao.cursor()
@@ -42,6 +50,7 @@ def insercao(conexao, query, valor):
         cursor.execute(query, valor)
         conexao.commit()
         return True
+    
     except psycopg2.Error as e:
         conexao.rollback()
         return e

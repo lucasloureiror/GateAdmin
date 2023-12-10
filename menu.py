@@ -14,10 +14,7 @@ def mostrar_menu():
     print("Escolha uma entidade para obter informações:")
     print("1. Stargates")
     print("2. Planetas")
-    print("3. Recursos")
-    print("4. Tecnologias")
-    print("5. Civilizações")
-    print("6. Sair")
+    print("3. Sair")
     print(38 * "=")
     print("Digite o número da sua escolha e pressione Enter:")
 
@@ -25,7 +22,7 @@ def obter_escolha_usuario():
     while True:
         try:
             escolha = int(input())
-            if 1 <= escolha <= 6:
+            if 1 <= escolha <= 3:
                 return escolha
             else:
                 print("Por favor, insira um número entre 1 e 5.")
@@ -39,18 +36,9 @@ def processar_escolha(escolha, conexao):
         # Adicione sua lógica aqui
     elif escolha == 2:
         print("Você escolheu Planetas.")
-        planeta.menu(conexao)
-        # Adicione sua lógica aqui
+        planeta.menu(conexao) 
     elif escolha == 3:
         print("Você escolheu Recursos.")
-        # Adicione sua lógica aqui
-    elif escolha == 4:
-        print("Você escolheu Tecnologias.")
-        # Adicione sua lógica aqui
-    elif escolha == 5:
-        print("Você escolheu Civilizações.")
-    elif escolha == 6:
-        main.sair(conexao)
     elif escolha == 42:
         database.init_data(conexao)
         print("Dados inicializados!")
