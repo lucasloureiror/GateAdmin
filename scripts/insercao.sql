@@ -153,6 +153,18 @@ values(1, '1784', 'MILITAR');
 insert into tipo_tecnologico(planeta, recurso, tipo)
 values(1, '2690', 'COMPUTACIONAL');
 
+------------------------------------------- MILITAR -------------------------------------------
+--insert into militar(planeta, recurso, capacidade_dano, fonte_energia, alcance, modo_operacao)
+--values();
+
+------------------------------------------- MEDICA --------------------------------------------
+--insert into medica(planeta, recurso, finalidade, funcionamento, compatibilidade_fisiologica, efeitos_colaterais)
+--values();
+
+---------------------------------------- COMPUTACIONAL ----------------------------------------
+--insert into computacional(planeta, recurso, capacidade_processamento, consumo_energetico, sistema_operacional, aplicacoes_principais)
+--values();
+
 ------------------------------------- TECNOLOGICO_NATURAL -------------------------------------
 --insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
 --values();
