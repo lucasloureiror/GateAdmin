@@ -13,22 +13,7 @@ def start_connection():
   
     else:
         return conn
-    
-def init_data(conexao):
-    cursor = conexao.cursor()
-    try: 
-            cursor.execute(open("scripts/criacao.sql", "r").read())
-            conexao.commit()  # Garante que as alterações sejam salvas
-    except psycopg2.Error as e:
-        print("Erro ao executar o script SQL: ", e)
-    try:
-            cursor.execute(open("scripts/insercao.sql", "r").read())
-            conexao.commit()  # Garante que as alterações sejam salvas
-    except psycopg2.Error as e:
-        print("Erro ao executar o script SQL: ", e)
 
-    finally:
-        cursor.close()
 
 def consulta(conexao, query, valor):
     cursor = conexao.cursor()

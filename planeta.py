@@ -39,19 +39,20 @@ class Planeta:
     
 
 def menu(conexao):
-    m.limpar_tela()
-    print(38 * "=")
-    print("Menu dos Planetas")
-    print(38 * "=")
-    print("Escolha uma operação:")
-    print("1. Listar todos os Planetas")
-    print("2. Buscar Planetas")
-    print("3. Inserir Planeta")
-    print("4. Retornar")
-    print("5. Sair")
-    print(38 * "=")
-    print("Digite o número da sua escolha e pressione Enter:")
     while True:
+        m.limpar_tela()
+        print(38 * "=")
+        print("Menu dos Planetas")
+        print(38 * "=")
+        print("Escolha uma operação:")
+        print("1. Listar todos os Planetas")
+        print("2. Buscar Planetas")
+        print("3. Inserir Planeta")
+        print("4. Retornar")
+        print("5. Sair")
+        print(38 * "=")
+        print("Digite o número da sua escolha e pressione Enter:")
+        
         try:
             escolha = int(input())
             if 1 <= escolha <= 5:

@@ -39,9 +39,6 @@ def processar_escolha(escolha, conexao):
         planeta.menu(conexao) 
     elif escolha == 3:
         main.sair(conexao)
-    elif escolha == 42:
-        database.init_data(conexao)
-        print("Dados inicializados!")
 
 def limpar_tela():
     # Limpa a tela (funciona em sistemas Unix e Windows)

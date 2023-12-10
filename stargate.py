@@ -84,6 +84,7 @@ def processar_escolha(escolha, conexao):
         endereco = input("Digite o endereco do Stargate: ")
         status = input("Digite o Status do Stargate: ")
         planeta = input("Digite o ID numérico ou o nome do planeta: ")
+        planeta = m.verificar_int(planeta)
         if isinstance(planeta, str):
             resultado = p.buscar_planeta(conexao, "nome", planeta)
             if len(resultado) > 1:
