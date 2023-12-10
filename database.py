@@ -12,7 +12,6 @@ def start_connection():
         exit()
   
     else:
-        print("Conexão estabelecida com sucesso.")
         return conn
     
 def init_data(conexao):
@@ -27,7 +26,7 @@ def init_data(conexao):
             conexao.commit()  # Garante que as alterações sejam salvas
     except psycopg2.Error as e:
         print("Erro ao executar o script SQL: ", e)
-        
+
     finally:
         cursor.close()
 
@@ -36,9 +35,11 @@ def consulta(conexao, query, valor):
     try:
         cursor.execute(query,(valor,))
         registros = cursor.fetchall()
+        conexao.commit()
         return registros, None
     
     except psycopg2.Error as e:
+        conexao.rollback()
         return None, e
 
     finally:
