@@ -11,7 +11,8 @@ class Stargate:
         # Verifica se o endereço tem 8 caracteres
         if len(self.endereco) != 8:
             return False
-        
+        if len(self.status_stargate) > 20:
+            return False
         return True
         
     def __repr__(self):
@@ -183,7 +184,7 @@ def buscar(conexao, parametro, valor):
 
 def inserir(conexao, stargate):
     if not stargate.validar():
-        input("Aperte enter para sair")
+        input("Stargate não passou na validação de dados, aperte enter para sair")
         return
     valores = (stargate.endereco, stargate.status_stargate, stargate.planeta)
     query = "insert into stargate(endereco, status_stargate, planeta) values(%s, %s, %s);"
