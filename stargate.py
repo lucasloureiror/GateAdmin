@@ -75,6 +75,7 @@ def processar_escolha(escolha, conexao):
     elif escolha == 3:
         print("Você escolheu inserir Stargate.")
     elif escolha == 4:
+        m.limpar_tela()
         m.start(conexao)
         
         # Adicione sua lógica aqui

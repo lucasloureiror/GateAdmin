@@ -2,6 +2,7 @@ import database, menu
 
 
 def main():
+    menu.limpar_tela()
     print("Bem vindo ao GateAdmin!")
     print("Tentando conexão com o banco de dados...")
     conexao = database.start_connection()

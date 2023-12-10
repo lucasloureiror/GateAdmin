@@ -37,4 +37,14 @@ def consulta(conexao, query):
      return registros
 
 def insercao(conexao, query, valor): 
-    ...
+    cursor = conexao.cursor()
+    try:
+        cursor.execute(query, valor)
+        conexao.commit()
+        return True
+    except psycopg2.Error as e:
+        conexao.rollback()
+        return e
+    
+    finally:
+        cursor.close()

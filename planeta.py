@@ -3,12 +3,34 @@ from prettytable import PrettyTable
 
 class Planeta:
     def __init__(self, id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta):
+        self.id_planeta  = id_planeta
         self.galaxia = galaxia
         self.sistema = sistema
         self.nome = nome
         self.tipo = tipo
         self.habitabilidade = habitabilidade
         self.status_planeta = status_planeta
+    
+    def validar(self):
+         # Verifica se as strings não estão vazias e têm o tamanho adequado
+        campos_e_limites = {
+            "galaxia": 100,
+            "sistema": 100,
+            "nome": 100,
+            "tipo": 20,
+            "habitabilidade": 20,
+            "status_planeta": 20
+        }
+
+        for campo, limite in campos_e_limites.items():
+            valor = getattr(self, campo)
+            if not valor or len(valor) > limite:
+                print(38*"=")
+                print(f"{campo.capitalize()} inválido ou muito longo (máximo de {limite} caracteres).")
+                print(38*"=")
+                return False
+
+        return True
 
     def __repr__(self):
         return (f"Planeta(id_planeta={self.id_planeta}, galaxia='{self.galaxia}', "
@@ -58,20 +80,21 @@ def processar_escolha(escolha, conexao):
         menu(conexao)
 
     elif escolha == 3:
+        m.limpar_tela()
         print("Você escolheu inserir um novo planeta.")
         # Aqui você solicita os dados do planeta ao usuário
-        id_planeta = input("Digite o ID do planeta: ")
         galaxia = input("Digite o nome da galáxia: ")
         sistema = input("Digite o nome do sistema: ")
         nome = input("Digite o nome do planeta: ")
         tipo = input("Digite o tipo do planeta: ")
         habitabilidade = input("Digite a habitabilidade do planeta: ")
         status_planeta = input("Digite o status do planeta: ")
-        novo_planeta = Planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
-        #inserir_planeta(conexao, novo_planeta)
+        novo_planeta = Planeta(-1, galaxia, sistema, nome, tipo, habitabilidade, status_planeta)
+        inserir_planeta(conexao, novo_planeta)
+        menu(conexao)
 
     elif escolha == 4:
-        print("Retornando ao menu principal.")
+        m.limpar_tela()
         m.start(conexao)
 
     elif escolha == 5:
@@ -97,13 +120,29 @@ def buscar_planeta(conexao, parametro, valor):
     imprimir_planetas(planetas)
     cursor.close()
 
+def inserir_planeta(conexao, planeta):
+    if not planeta.validar():
+        input("Aperte enter para sair")
+        return
+    valores = (planeta.galaxia, planeta.sistema, planeta.nome, planeta.tipo, planeta.habitabilidade, planeta.status_planeta)
+    query = "insert into planeta(id_planeta, galaxia, sistema, nome, tipo, habitabilidade, status_planeta) values(nextval('seq_planeta'), %s, %s, %s, %s, %s, %s);"
+    resultado = database.insercao(conexao, query, valores)
+    if resultado is not True:
+        print("Ocorreu um erro na inserção do planeta: ", resultado)
+        input("Aperte enter para continuar")
+        return
+    
+    print("\nPlaneta inserido com sucesso!")
+    input("Aperte enter para continuar")
+
+
 def imprimir_planetas(planetas):
     tabela = PrettyTable()
     tabela.field_names = ["ID", "Galáxia", "Sistema", "Nome", "Tipo", "Habitabilidade", "Status"]
     for planeta in planetas:
         tabela.add_row([planeta.id_planeta, planeta.galaxia, planeta.sistema, planeta.nome, planeta.tipo, planeta.habitabilidade, planeta.status_planeta])
     print(tabela)
-    print("Faça a análise dos dados, anote o que for necessário e aperte qualquer tecla para retornar ao menu.")
+    print("Faça a análise dos dados, anote o que for necessário e aperte enter para retornar ao menu.")
     input()
 
 
