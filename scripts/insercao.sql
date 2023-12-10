@@ -32,7 +32,7 @@ insert into recurso(planeta, codigo, nome, abundancia, origem)
 values(1, '2690', 'Dispositivo de comunicação para longas distâncias', 'ESCASSO', 'TECNOLOGICO');
 
 insert into recurso(planeta, codigo, nome, abundancia, origem)
-values(1, '301', 'Carvão mineral', 'ABUNDANTE', 'NATURAL');
+values(1, '301', 'Carvão vegetal', 'ABUNDANTE', 'NATURAL');
 
 insert into recurso(planeta, codigo, nome, abundancia, origem)
 values(1, '562', 'Diamante', 'ESCASSO', 'NATURAL');
@@ -122,7 +122,7 @@ values('Humanos', 3, 'Atlantis', '423');
 
 ------------------------------------------- NATURAL -------------------------------------------
 insert into recurso_natural(planeta, recurso, tipo)
-values(1, '301', 'MINERAL');
+values(1, '301', 'VEGETAL');
 
 insert into recurso_natural(planeta, recurso, tipo)
 values(1, '562', 'MINERAL');
@@ -140,4 +140,8 @@ values(1, '1784', 'MILITAR');
 
 insert into tipo_tecnologico(planeta, recurso, tipo)
 values(1, '2690', 'COMPUTACIONAL');
+
+------------------------------------- TECNOLOGICO_NATURAL -------------------------------------
+--insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
+--values();
 

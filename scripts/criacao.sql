@@ -172,3 +172,18 @@ create table Tipo_Tecnologico(
 		on update cascade on delete cascade
 );
 
+------------------------------------- TECNOLOGICO_NATURAL -------------------------------------
+create table Tecnologico_Natural(
+	planeta_tec int not null,
+	recurso_tec varchar(9) not null,
+	planeta_nat int not null,
+	recurso_nat varchar(9) not null,
+	constraint PK_TECNOLOGICO_NATURAL primary key(planeta_tec, recurso_tec, planeta_nat, recurso_nat),
+	constraint FK_RECURSO_TECNOLOGICO foreign key(planeta_tec, recurso_tec)
+		references Recurso_Tecnologico(planeta, recurso)
+		on update cascade on delete cascade,
+	constraint FK_RECURSO_NATURAL foreign key(planeta_nat, recurso_nat)
+		references Recurso_Natural(planeta, recurso)
+		on update cascade on delete cascade
+);
+

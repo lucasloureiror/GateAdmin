@@ -26,3 +26,11 @@ select * from recurso_tecnologico rt;
 
 select * from tipo_tecnologico tt;
 
+select * from tecnologico_natural tn;
+
+select tt.planeta, tt.recurso, rec.nome, rec.abundancia, rec.origem, tt.tipo
+from tipo_tecnologico tt
+inner join recurso_tecnologico rt 
+	on rt.planeta = tt.planeta and rt.recurso = tt.recurso
+inner join recurso rec
+	on rec.planeta = rt.planeta and rec.codigo = rt.recurso;
