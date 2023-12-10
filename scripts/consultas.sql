@@ -20,3 +20,5 @@ select * from especie e;
 
 select * from civilizacao_vive_planeta cvp;
 
+select * from recurso_natural rn;
+

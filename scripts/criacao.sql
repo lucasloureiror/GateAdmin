@@ -140,3 +140,13 @@ create table Civilizacao_vive_Planeta(
 		on update cascade on delete cascade
 );
 
+------------------------------------------- NATURAL -------------------------------------------
+create table Recurso_Natural(
+	planeta int not null,
+	recurso varchar(9) not null,
+	tipo varchar(20),
+	constraint PK_NATURAL primary key(planeta, recurso),
+	constraint FK_NATURAL_RECURSO foreign key(planeta, recurso) references Recurso(planeta, codigo)
+		on update cascade on delete cascade
+);
+

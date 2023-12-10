@@ -120,3 +120,10 @@ values('Humanos', 1, 'Estados Unidos', '331.9 milhões');
 insert into civilizacao_vive_planeta(civilizacao, planeta, localizacao, populacao)
 values('Humanos', 3, 'Atlantis', '423');
 
+------------------------------------------- NATURAL -------------------------------------------
+insert into recurso_natural(planeta, recurso, tipo)
+values(1, '301', 'MINERAL');
+
+insert into recurso_natural(planeta, recurso, tipo)
+values(1, '562', 'MINERAL');
+
