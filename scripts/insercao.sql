@@ -26,16 +26,43 @@ values(nextval('seq_planeta'), 'Pegasus', 'Sistema Lantean', 'Lantea', 'ROCHOSO'
 
 ------------------------------------------- RECURSO -------------------------------------------
 insert into recurso(planeta, codigo, nome, abundancia, origem)
-values(1, '1784', 'Arma de fogo', 'ABUNDANTE', 'TECNOLOGICO');
+values(1, '1784', 'Arma de Fogo', 'ABUNDANTE', 'TECNOLOGICO');
 
 insert into recurso(planeta, codigo, nome, abundancia, origem)
-values(1, '2690', 'Dispositivo de comunicação para longas distâncias', 'ESCASSO', 'TECNOLOGICO');
+values(1, '3456', 'Bomba Nuclear', 'ESCASSO', 'TECNOLOGICO');
 
 insert into recurso(planeta, codigo, nome, abundancia, origem)
-values(1, '301', 'Carvão vegetal', 'ABUNDANTE', 'NATURAL');
+values(1, '9876', 'Scanner Médico Avançado', 'MODERADO', 'TECNOLOGICO');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '5432', 'Implante Biônico', 'ESCASSO', 'TECNOLOGICO');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '2690', 'Dispositivo de Comunicação', 'ESCASSO', 'TECNOLOGICO');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '1232', 'Circuito Integrado', 'ESCASSO', 'TECNOLOGICO');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '301', 'Carvão Vegetal', 'ABUNDANTE', 'NATURAL');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '789', 'Madeira', 'ABUNDANTE', 'NATURAL');
 
 insert into recurso(planeta, codigo, nome, abundancia, origem)
 values(1, '562', 'Diamante', 'ESCASSO', 'NATURAL');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '651', 'Dióxido de Silício', 'MODERADO', 'NATURAL');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '987', 'Água Potável', 'ABUNDANTE', 'NATURAL');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '765', 'Pele de Criatura Exótica', 'MODERADO', 'NATURAL');
+
+insert into recurso(planeta, codigo, nome, abundancia, origem)
+values(1, '321', 'Veneno de Serpente Rara', 'ESCASSO', 'NATURAL');
 
 ------------------------------------------ STARGATE -------------------------------------------
 insert into stargate(endereco, status_stargate, planeta)
@@ -122,48 +149,120 @@ values('Humanos', 3, 'Atlantis', '423');
 
 ------------------------------------------- NATURAL -------------------------------------------
 insert into recurso_natural(planeta, recurso, tipo)
+values(1, '562', 'MINERAL');
+
+insert into recurso_natural(planeta, recurso, tipo)
+values(1, '651', 'MINERAL');
+
+insert into recurso_natural(planeta, recurso, tipo)
+values(1, '987', 'MINERAL');
+
+insert into recurso_natural(planeta, recurso, tipo)
+values(1, '765', 'ANIMAL');
+
+insert into recurso_natural(planeta, recurso, tipo)
+values(1, '321', 'ANIMAL');
+
+insert into recurso_natural(planeta, recurso, tipo)
 values(1, '301', 'VEGETAL');
 
 insert into recurso_natural(planeta, recurso, tipo)
-values(1, '562', 'MINERAL');
+values(1, '789', 'VEGETAL');
 
 ------------------------------------------- MINERAL -------------------------------------------
---insert into mineral(planeta, recurso, composicao, pureza, cor, dureza)
---values();
+insert into mineral(planeta, recurso, composicao, pureza, cor, dureza)
+values(1, '562', 'Carbono puro cristalizado', 'ALTA', 'Incolor', '10 Mohs');
+
+insert into mineral(planeta, recurso, composicao, pureza, cor, dureza)
+values(1, '651', 'Silício e oxigênio', 'MODERADA', 'Branca ou incolor', '7 Mohs');
+
+insert into mineral(planeta, recurso, composicao, pureza, cor, dureza)
+values(1, '987', 'Hidrogênio, oxigênio e minerais variados', 'ALTA', 'Incolor', 'N/A'); -- Água não tem dureza em Mohs
 
 ------------------------------------------- ANIMAL --------------------------------------------
---insert into animal(planeta, recurso, bioma, dieta, nivel_ameaca)
---values();
+insert into animal(planeta, recurso, especie, bioma, dieta, nivel_ameaca)
+values(1, '765', 'Criatura Exótica', 'Floresta Tropical', 'Herbívora', 'BAIXO');
+
+insert into Animal(planeta, recurso, especie, bioma, dieta, nivel_ameaca)
+values(1, '321', 'Serpente Rara', 'Deserto', 'Carnívora', 'MEDIO');
 
 ------------------------------------------- VEGETAL -------------------------------------------
---insert into vegetal(planeta, recurso, toxicidade, bioma, utilizacao, propriedades_medicinais)
---values();
+insert into vegetal(planeta, recurso, toxicidade, bioma, utilizacao, propriedades_medicinais)
+values(1, '301', 'BAIXA', 'Floresta Tropical', 'Combustível', 'Usado na produção de medicamentos para problemas digestivos.');
+
+insert into vegetal(planeta, recurso, toxicidade, bioma, utilizacao, propriedades_medicinais)
+values(1, '789', 'BAIXA', 'Floresta Temperada', 'Construção e fabricação de móveis', 'Algumas espécies têm propriedades antimicrobianas.');
 
 ----------------------------------------- TECNOLOGICO -----------------------------------------
 insert into recurso_tecnologico(planeta, recurso)
 values(1, '1784');
 
 insert into recurso_tecnologico(planeta, recurso)
+values(1, '3456');
+
+insert into recurso_tecnologico(planeta, recurso)
+values(1, '9876');
+
+insert into recurso_tecnologico(planeta, recurso)
+values(1, '5432');
+
+insert into recurso_tecnologico(planeta, recurso)
 values(1, '2690');
+
+insert into recurso_tecnologico(planeta, recurso)
+values(1, '1232');
 
 -------------------------------------- TIPO_TECNOLOGICO ---------------------------------------
 insert into tipo_tecnologico(planeta, recurso, tipo)
 values(1, '1784', 'MILITAR');
 
 insert into tipo_tecnologico(planeta, recurso, tipo)
+values(1, '3456', 'MILITAR');
+
+insert into tipo_tecnologico(planeta, recurso, tipo)
+values(1, '9876', 'MEDICA');
+
+insert into tipo_tecnologico(planeta, recurso, tipo)
+values(1, '5432', 'MEDICA');
+
+insert into tipo_tecnologico(planeta, recurso, tipo)
 values(1, '2690', 'COMPUTACIONAL');
 
+insert into tipo_tecnologico(planeta, recurso, tipo)
+values(1, '1232', 'COMPUTACIONAL');
+
 ------------------------------------------- MILITAR -------------------------------------------
---insert into militar(planeta, recurso, capacidade_dano, fonte_energia, alcance, modo_operacao)
---values();
+insert into militar(planeta, recurso, capacidade_dano, fonte_energia, alcance, modo_operacao)
+values(1, '1784', 'MEDIA', 'Pólvora', 'Média e longa distância', 'AUTOMATICO');
+
+insert into militar(planeta, recurso, capacidade_dano, fonte_energia, alcance, modo_operacao)
+values(1, '3456', 'EXTREMA', 'Reação nuclear', 'Global', 'CONTROLADO REMOTAMENTE');
 
 ------------------------------------------- MEDICA --------------------------------------------
---insert into medica(planeta, recurso, finalidade, funcionamento, compatibilidade_fisiologica, efeitos_colaterais)
---values();
+insert into medica(planeta, recurso, finalidade, funcionamento, compatibilidade_fisiologica, efeitos_colaterais)
+values(
+	1, '9876', 
+	'Diagnóstico Avançado', 
+	'Utiliza tecnologia de imagem para diagnósticos precisos.', 
+	'Compatível com a fisiologia humana.',
+	'Baixo risco de efeitos colaterais.'
+);
+
+insert into medica(planeta, recurso, finalidade, funcionamento, compatibilidade_fisiologica, efeitos_colaterais)
+values(
+	1, '5432', 
+	'Melhoria de Capacidades Fisiológicas', 
+	'Integração de componentes biônicos para aprimorar habilidades físicas.', 
+	'Adaptado para ser compatível com o corpo humano.', 
+	'Efeitos colaterais mínimos, sujeito a adaptação individual.'
+);
 
 ---------------------------------------- COMPUTACIONAL ----------------------------------------
---insert into computacional(planeta, recurso, capacidade_processamento, consumo_energetico, sistema_operacional, aplicacoes_principais)
---values();
+insert into Computacional(planeta, recurso, capacidade_processamento, consumo_energetico, sistema_operacional, aplicacoes_principais)
+values(1, '2690', 'ALTA', 'MODERADO', 'Sistema proprietário', 'Comunicação de longa distância, processamento de dados em tempo real.');
+
+insert into Computacional(planeta, recurso, capacidade_processamento, consumo_energetico, sistema_operacional, aplicacoes_principais)
+values(1, '1232', 'MUITO ALTA', 'BAIXO', 'Sistema embarcado', 'Integração em dispositivos eletrônicos, automação de processos industriais.');
 
 ------------------------------------- TECNOLOGICO_NATURAL -------------------------------------
 --insert into tecnologico_natural(planeta_tec, recurso_tec, planeta_nat, recurso_nat)
