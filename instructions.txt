@@ -20,5 +20,3 @@ make docker-run
 Se quiser parar: make docker-stop
 
 Se quiser reiniciar o container: make docker-restart
-
-.
